@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { format } from "date-fns";
 import "../styles/expenseForm.css";
 
-const ExpenseForm = ({ saveExpense, expense, comp }) => {
+const ExpenseForm = ({ saveExpense, comp, expense }) => {
   const [title, setTitle] = useState(
     expense?.description ? expense.description : ""
   );
@@ -27,7 +27,6 @@ const ExpenseForm = ({ saveExpense, expense, comp }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     saveExpense(title, price, date);
-
     setDate("");
     setPrice("");
     setTitle("");

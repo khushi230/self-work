@@ -27,8 +27,15 @@ const ExpenseList = () => {
   };
 
   const editById = (title, price, date, id) => {
-    //do something
-    console.log(title, price, date, id);
+    const updatedArray = [...expenseList];
+    updatedArray.forEach((expense) => {
+      if (expense.id === id) {
+        expense.description = title;
+        expense.price = price;
+        expense.date = new Date(date);
+      }
+    });
+    setExpenseList(updatedArray);
   };
 
   return (
