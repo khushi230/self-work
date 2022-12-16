@@ -6,6 +6,7 @@ const ExpenseForm = ({ saveExpense, expense, comp }) => {
   const [title, setTitle] = useState(
     expense?.description ? expense.description : ""
   );
+
   const [price, setPrice] = useState(expense?.price ? expense.price : "");
   const [date, setDate] = useState(
     expense?.date ? format(new Date(expense.date), "yyyy-MM-dd") : ""
@@ -14,22 +15,26 @@ const ExpenseForm = ({ saveExpense, expense, comp }) => {
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
   };
+
   const handlePriceChange = (event) => {
     setPrice(event.target.value);
   };
+
   const handleDateChange = (event) => {
     setDate(event.target.value);
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     saveExpense(title, price, date);
+
     setDate("");
     setPrice("");
     setTitle("");
   };
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="new-expense__controls">
         <div style={{ display: "block" }}>
           <div style={{ display: "inline-block", margin: "10px" }}>
@@ -62,11 +67,7 @@ const ExpenseForm = ({ saveExpense, expense, comp }) => {
             />
           </div>
           <div style={{ display: "inline-block" }}>
-            <button
-              type="submit"
-              onClick={handleSubmit}
-              disabled={!price || !title || !date}
-            >
+            <button type="submit" disabled={!price || !title || !date}>
               {comp === "edit" ? "Update" : "Add"}
             </button>
           </div>

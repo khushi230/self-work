@@ -12,6 +12,7 @@ const ExpenseItem = ({ expense, deleteById, editById }) => {
   const editExpense = (title, price, date) => {
     editById(title, price, date, expense.id);
   };
+
   return (
     <div>
       <div className="expense-item">
