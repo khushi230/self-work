@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import "../styles/expenseItem.css";
 import ExpenseForm from "./ExpenseForm";
+
 const ExpenseItem = ({ expense, deleteById, editById }) => {
   const [showEditForm, setShowEditForm] = useState(false);
 
@@ -11,6 +12,7 @@ const ExpenseItem = ({ expense, deleteById, editById }) => {
 
   const editExpense = (title, price, date) => {
     editById(title, price, date, expense.id);
+    setShowEditForm(false);
   };
 
   return (
